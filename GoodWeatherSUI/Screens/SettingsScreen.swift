@@ -37,7 +37,7 @@ struct SettingsScreen: View {
     
     @EnvironmentObject var store : Store
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @AppStorage("unit") private var selectedUnit: TemperatureUnit = .kelvin
+    @AppStorage("unit") private var selectedUnit: TemperatureUnit = .kelvin //save in userDefaults
     
     
     var body: some View {

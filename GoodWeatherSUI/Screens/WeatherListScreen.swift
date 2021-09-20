@@ -64,6 +64,7 @@ struct WeatherListScreen_Previews: PreviewProvider {
 }
 
 struct WeatherCell: View {
+    @EnvironmentObject var store : Store
     let weather : WeatherViewModel
     var body: some View {
         HStack {
@@ -84,7 +85,7 @@ struct WeatherCell: View {
             URLImage(url: Constants.Urls.weatherUrlAsStringByIcon(icon: weather.icon))
                 .frame(width: 50, height: 50, alignment: .center)
             
-            Text("\(Int(weather.temperature)) K")
+            Text("\(Int(weather.getTemperatureByUnit(store.selectedUnit))) \(String(store.selectedUnit.displayText.prefix(1)))")
         }
         .padding()
         .background(Color(#colorLiteral(red: 0.9133135676, green: 0.9335765243, blue: 0.98070997, alpha: 1)))
